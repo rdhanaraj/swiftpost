@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy] 
   before_action :correct_user, only: [:edit, :update, :destroy]
 
+  def import
+    Order.import params[:spreadsheet]
+  end
+
   def show
   end
 
@@ -16,7 +20,6 @@ class OrdersController < ApplicationController
     unless user_signed_in?
       redirect_to new_user_session_path
     else
-      #@order = current_user.orders.new
       @order = Order.new
       @user = current_user
     end
@@ -24,6 +27,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build order_params
+
+    import if params[:spreadsheet]
     if @order.save
       redirect_to @order, notice: 'Order was successfully created!'
     else
@@ -57,6 +62,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:design, :user_id) if params[:order]
+      params.require(:order).permit(:design, :user_id, :city, :state, :zipcode) if params[:order]
     end
 end

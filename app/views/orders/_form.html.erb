@@ -1,25 +1,52 @@
 <%= form_for @order, :url => orders_path, :html => { :multipart => true } do |form| %>
-    <div>
-      <%= form.label :design %><br>
-      <%= form.file_field :design, class: 'dropzone' %>
+  <div class= "row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div id="step1 center">
+      <h1>Step 1: Upload a design</h1>
+      <div class="form-group">
+        <%= form.file_field :design, class: 'dropzone' %>
+      </div>
+
+      <button data-id=1 class="btn btn-default">Upload Recipient Address</button>
+      <button data-id=2 class="btn btn-default">Select a Demographic</button>
     </div>
 
-    <div>
-      <%= form.label :city %>
-      <%= form.text_field :city, class: 'form-control' %>
+    <div id="step2-a" class="hidden">
+      <div class="form-group">
+        <h1>Step 2: Select a demographic</h1>
+        <%= form.label :city %>
+        <%= form.text_field :city, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.text_field :state, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :zipcode %>
+        <%= form.number_field :zipcode, class: 'form-control' %>
+      </div>
+
+      <button class="btn btn-default">Make Payment</button>
     </div>
 
-    <div>
-      <%= form.label :state %>
-      <%= form.text_field :state, class: 'form-control' %>
+    <div id="step2-b" class="hidden">
+      <h3>Step 2: Upload a spreadsheet of addresses </h3>
+
+      <%= form.file_field :spreadsheet, class: 'dropzone' %><br>
+
+      <button class="btn btn-default">Make Payment</button>
     </div>
 
-    <div>
-      <%= form.label :zipcode %>
-      <%= form.number_field :zipcode, class: 'form-control' %>
-    </div> <br>
-
-    <div class="actions">
-      <%= form.submit class: 'btn btn-success' %>
+    <div id="step3" class="hidden">
+      Credit card submission
+      <div class="actions">
+        <%= link_to 'Next', class: 'btn btn-info' %>
+      </div>
     </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>  
 <% end %>

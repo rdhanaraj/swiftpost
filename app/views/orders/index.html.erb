@@ -1,2 +1,7 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<br><br><br>
+<% for order in @orders %>
+  <%= order.to_yaml.inspect %>
+  <% 3.times do %>
+    <br>
+  <% end %>
+<% end %>
