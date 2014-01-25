@@ -1,20 +1,20 @@
 <%= form_for @order, :url => orders_path, :html => { :multipart => true } do |form| %>
-    <div>
+    <div class="form-group">
       <%= form.label :design %><br>
       <%= form.file_field :design, class: 'dropzone' %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= form.label :city %>
       <%= form.text_field :city, class: 'form-control' %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= form.label :state %>
       <%= form.text_field :state, class: 'form-control' %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= form.label :zipcode %>
       <%= form.number_field :zipcode, class: 'form-control' %>
     </div> <br>
