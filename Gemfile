@@ -13,6 +13,7 @@ gem 'devise'
 gem 'figaro'
 gem 'sendgrid'
 gem 'paperclip', '~> 3.5.3'
+gem 'dropzonejs-rails'
 
 group :development do
   gem 'better_errors'

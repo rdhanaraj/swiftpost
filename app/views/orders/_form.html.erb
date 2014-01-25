@@ -1,8 +1,8 @@
 <%= form_for @order, :url => orders_path, :html => { :multipart => true } do |form| %>
-    <div class="field form-group nr">
+    <div>
       <%= form.label :design %><br>
-      <%= form.file_field :design, class: 'form-control' %>
-    </div>
+      <%= form.file_field :design, class: 'dropzone' %>
+    </div><br>
     <div class="actions">
       <%= form.submit class: 'btn btn-success' %>
     </div>

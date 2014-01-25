@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125094445) do
+ActiveRecord::Schema.define(version: 20140125160050) do
 
   create_table "orders", force: true do |t|
     t.string   "design"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20140125094445) do
     t.string   "design_content_type"
     t.integer  "design_file_size"
     t.datetime "design_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
