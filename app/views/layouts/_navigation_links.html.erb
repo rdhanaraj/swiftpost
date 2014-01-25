@@ -1,14 +1,37 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
-  <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to edit_user_registration_path do %>
+    <i class="fa fa-cog fa-2x"></i>
+    <% end %>
+  </li>
+
+
+    <li>
+      <%= link_to orders_path do %>
+        <i class="fa fa-shopping-cart fa-2x"></i> 
+      <% end %>
+    </li>
+
+  
+  <li><%= link_to destroy_user_session_path, :method=>'delete' do %>
+    <i class="fa fa-sign-out fa-2x"></i>
+  <% end %>
+
+</li>
+
+
+
 <% else %>
-  <li><%= link_to 'Login', new_user_session_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-<% else %>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Users', users_path %></li>
+
+
+    <li><%= link_to root_path do %>
+      <i class="fa fa-info-circle fa-2x"></i>
+    <% end %>
+  </li>
+
+  <li><%= link_to new_user_registration_path do %>
+      <i class="fa fa-sign-in fa-2x"></i>
+    <% end %>
+  </li>
+
 <% end %>
