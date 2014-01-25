@@ -1,0 +1,9 @@
+<%= form_for @order, :url => orders_path, :html => { :multipart => true } do |form| %>
+    <div>
+      <%= form.label :design %><br>
+      <%= form.file_field :design, class: 'dropzone' %>
+    </div><br>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
+<% end %>

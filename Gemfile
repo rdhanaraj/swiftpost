@@ -12,6 +12,10 @@ gem 'bootstrap-sass', '>= 3.0.0.0'
 gem 'devise'
 gem 'figaro'
 gem 'sendgrid'
+gem 'paperclip', '~> 3.5.3'
+gem 'dropzonejs-rails'
+gem 'font-awesome-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
