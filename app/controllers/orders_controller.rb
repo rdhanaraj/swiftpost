@@ -10,6 +10,21 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find_by params[:id]
+
+    # if data is from the demographic selector
+    @order.scrape_the_data(@order.create_address(params[:city], params[:state], params[:zipcode])).each do |key, value|
+      if (params[:starting_age] >= @order.starting_age and params[:starting_age] <= @order.ending_age)
+        or (params[:ending_age] >= @order.starting_age and params[:ending_age] <= @order.ending_age)
+        recipient = Recipient.new
+        recipient.update_attributes params
+        recipient.update_attributes name: 'Current Resident', address: key
+        recipient.save!
+      end
+    end
+
+    # if data is from the spreadsheet uploader
+    
   end
 
   def index
@@ -62,6 +77,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:design, :user_id, :city, :state, :zipcode) if params[:order]
+      params.require(:order).permit(:design, :user_id, :city, :state, :zipcode, :sender_city, :sender_state, :sender_zipcode, :starting_age, :ending_age) if params[:order]
     end
 end
