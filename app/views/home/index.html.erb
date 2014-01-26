@@ -5,7 +5,14 @@
 <h1 class="text-center" style="position:relative;font-size:60px;color:white">Get The Job Done.</h1>
 <p class="text-center" style="position:relative;font-size:20px;color:white">
   The only direct mail manager that finds customers for you. <br> <br> 
+  <% if user_signed_in? %> 
+<%= link_to "Make One", new_order_path, class: "btn btn-default btn-lg" %>
+<% else %>
 <%= link_to "Try Now", new_user_registration_path, class: "btn btn-default btn-lg" %>
+<% end %>
+
+  
+
 </li>
 </p>
 
