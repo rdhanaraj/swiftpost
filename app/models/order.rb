@@ -3,21 +3,34 @@ require 'nokogiri'
 require 'open-uri'
 
 class Order < ActiveRecord::Base
+  belongs_to :user
+  has_many :recipients
+  attr_accessor :credit_card_number, :cvc, :expiration, :cardholder_name
+  has_attached_file :design, styles: {thumbnail: "60x60#"}
 
-  belongs_to :user #user is basically the customer
-    has_attached_file :design, styles: {thumbnail: "60x60#"}
-
-  validates_attachment :design, :presence => true,
+  validates_presence_of :sender_city, :sender_state, :sender_zipcode
+  validates_attachment :design, presence: true,
     :content_type => { :content_type => "application/pdf" }
+
+  def expenses
+    case setting
+      when 'Black and White Document'
+        return cap * 0.99
+      when 'Color Document'
+        return cap * 1.49
+      when 'Glossy Color Flyer'
+        return cap * 2.53
+    end
+  end
   
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      product = find_by_id(params['id'])
-      product.update_attributes(row)
-      product.save!
+      recipient = Recipient.new
+      recipient.update_attributes(name: spreadsheet.row(i)[1], address: spreadsheet.row(i)[2], city: spreadsheet.row(i)[3], state: spreadsheet.row(i)[4], country: 'US')
+      recipient.order_id = params[:id]
+      recipient.save!
     end
   end
 
@@ -39,10 +52,10 @@ class Order < ActiveRecord::Base
       :street => "#{city}, #{state}",
       :where  => "#{zip}"
       }
-   ).to_s
+    ).to_s
   end
 
-  def scrape_the_data(url)
+  def scrape_the_data(url, cap = 0)
     doc = Nokogiri::HTML(open(url))
     addresses_and_ages = Hash.new()
 
