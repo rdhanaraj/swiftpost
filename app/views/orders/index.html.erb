@@ -1,5 +1,14 @@
+<% @orders = Order.all %>
+<% if (@orders.count > 0) %>
+  <% @orders.each do |order| %>
+    <%= image_tag order.design.url(:thumb) %>
 
-<p>User: <%= current_user.name %></p>
-<p>Email: <%= current_user.email if current_user.email %></p>
-<p> 
+    <strong>Number of copies:</strong> <%= order.recipients.count %>
+    <strong>Order date:</strong> <%= order.order_date %>
+    <strong>Paper Setting:</strong> <%= order.setting %>
+    <strong>Total Cost:</strong> <%= order.expenses %>
+<% end %>
 
+<% else %>
+  No orders
+<% end %>
