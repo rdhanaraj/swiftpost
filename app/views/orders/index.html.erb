@@ -1,4 +1,7 @@
 <% for order in @orders %>
-  <%= order.inspect %>
-  <br><br><br>
+  
+  <div class="panel panel-default">
+  </div>
+
+  <%= image_tag @order.design.url(:thumb) %>
 <% end %>
