@@ -2,25 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #bg {
-	
-	
 	left:0;
 	width:100%;
 	position: absolute;
 	height:100%
-
-
-}
-#first {
-	position: relative;
-
 }
 .balls {
 	background-image: url('assets/intro-bg.jpg');
 	min-width: 100%;
 	min-height: 600px;
 }
-.okay {
-	margin-top: 315px;
 
+.okay {
+	margin-top: 345px;
+}
+
+.first, .second, .third {
+	background-color: transparent;
+	border-width: 2px;
 }
