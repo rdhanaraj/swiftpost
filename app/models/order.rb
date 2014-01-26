@@ -3,8 +3,6 @@ require 'nokogiri'
 require 'open-uri'
 
 class Order < ActiveRecord::Base
-  # attr_accessible :name, :address_line1, :address_line2, :address_city, 
-  #   :address_state, :address_zip, :address_country
 
   belongs_to :user #user is basically the customer
     has_attached_file :design, styles: {thumbnail: "60x60#"}
