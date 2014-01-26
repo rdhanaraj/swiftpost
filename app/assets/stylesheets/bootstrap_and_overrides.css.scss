@@ -36,12 +36,12 @@ main {
   @extend .container;
   padding-bottom: 80px;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
+  margin-top: 48px; // accommodate the navbar
   }
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}
 
 // Styles for Devise views
 // using Bootstrap

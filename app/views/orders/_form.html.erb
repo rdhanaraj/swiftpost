@@ -8,6 +8,11 @@
         <%= form.file_field :design, class: 'dropzone dz-preview' %>
       </div>
 
+      <div class="form-group">
+        <%= form.select :setting, [['Black and White Document', 1], ['Color Document', 2], ['Glossy Color Flyer', 3]], class: 'form-control' %>
+      </div>
+
+
       <button data-id=1 class="btn btn-default">Upload Recipient Address</button>
       <button data-id=2 class="btn btn-default">Select a Demographic</button>
     </div>
@@ -44,56 +49,18 @@
         <%= form.number_field :cap, class: 'form-control' %>
       </div>
 
-      <button class="btn btn-default">Make Payment</button>
+      <%= form.submit 'Make Payment', class: 'btn btn-default' %>
     </div>
 
     <div id="step2-b" class="hidden">
       <h1>Step 2: Upload addresses </h1>
       <%= form.file_field :spreadsheet, class: 'dropzone' %><br>
 
-      <button class="btn btn-default">Make Payment</button>
+      <!-- <button class="btn btn-default">Make Payment</button> -->
+      <%= form.submit 'Make Payment' %>
     </div>
-
-    <div id="step3" class="hidden">
-      <h1>Step 3: Set order details & pay</h1>
-      <div class="form-group">
-        <%= form.label :order_date %>
-        <%= form.date_field :order_date, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
-        <%= form.select :setting, [['Black and White Document', 1], ['Color Document', 2], ['Glossy Color Flyer', 3]], class: 'form-control' %>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-6 form-group">
-          <%= form.label 'Name' %>
-          <%= form.text_field :cardholder_name, class: 'form-control'%>
-        </div>
-
-        <div class="col-md-6 form-group">
-          <%= form.label 'Credit Card Number' %>
-          <%= form.number_field :credit_card_number, class: 'form-control' %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-6 form-group">
-          <%= form.label 'CVC' %>
-          <%= form.number_field :cvc, class: 'form-control' %>
-        </div>
-
-        <div class="col-md-6 form-group">
-          <%= form.label 'Expiration' %>
-          <%= form.date_field :expiration, class: 'form-control' %>
-        </div>
-      </div>
-      <hr>
-
-      <p class="lead">Your total is <strong><%= @order.expenses %></strong></p>
-      <div class="actions text-center">
-        <%= link_to 'Finish', orders_path, class: 'btn btn-success btn-lg' %>
-      </div>
     </div>
     </div>
     <div class="col-md-3"></div>

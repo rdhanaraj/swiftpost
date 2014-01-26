@@ -1,2 +1,42 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="row">
+  <div class="col-md-3"></div>
+
+  <div class="col-md-6">
+  <%= form_for @order, :url=>orders_path, :html => { :multipart => true } do |form|%>
+    <div class="form-group">
+      <%= form.label :order_date %>
+      <%= form.date_field :order_date, class: 'form-control' %>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= form.label 'Name' %>
+        <%= form.text_field :cardholder_name, class: 'form-control'%>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <%= form.label 'Credit Card Number' %>
+        <%= form.number_field :credit_card_number, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= form.label 'CVC' %>
+        <%= form.number_field :cvc, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <%= form.label 'Expiration' %>
+        <%= form.date_field :expiration, class: 'form-control' %>
+      </div>
+    </div>
+    <hr>
+
+    <p class="lead">Your total is <strong><%= @order.expenses %></strong></p>
+    <div class="actions text-center">
+  <%= form.submit 'Complete Transaction', class: 'btn btn-success btn-lg pull-right' %>
+  <% end %>
+  </div>
+  </div>
