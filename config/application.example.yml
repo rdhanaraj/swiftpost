@@ -13,3 +13,4 @@ SENDGRID_PASSWORD: Your_Password
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
+LOB_API_KEY: live_45276d9bcbb1e49e4512926ec100bfe2e6d

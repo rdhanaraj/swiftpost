@@ -18,6 +18,7 @@ gem 'font-awesome-rails'
 gem 'roo'
 gem "nokogiri"
 gem 'addressable'
+gem 'lob'
 
 group :development do
   gem 'better_errors'
