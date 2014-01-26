@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+
 ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'sqlite3'
@@ -16,7 +16,7 @@ gem 'paperclip', '~> 3.5.3'
 gem 'dropzonejs-rails'
 gem 'font-awesome-rails'
 gem 'roo'
-gem 'nokogiri'
+gem "nokogiri"
 gem 'addressable'
 
 group :development do
