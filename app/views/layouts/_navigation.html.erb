@@ -8,7 +8,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Swiftpost', root_path, class: 'navbar-brand' %>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'swiftpost.png', width: '42px' %>
+      <% end %>
+      <%= link_to 'swiftpost', root_path, class: 'navbar-brand', style: 'font-size: 30px;'%>
+
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
