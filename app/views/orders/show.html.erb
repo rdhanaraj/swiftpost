@@ -36,7 +36,7 @@
 
     <p class="lead">Your total is <strong><%= @order.expenses %></strong></p>
     <div class="actions text-center">
-  <%= form.submit 'Complete Transaction', class: 'btn btn-success btn-lg pull-right' %>
+  <%= link_to 'Complete Transaction', orders_path, class: 'btn btn-success btn-lg pull-right' %>
   <% end %>
   </div>
   </div>
