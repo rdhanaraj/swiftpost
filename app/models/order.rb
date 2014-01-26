@@ -5,11 +5,23 @@ require 'addressable/uri'
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :recipients
+  attr_accessor :credit_card_number, :cvc, :expiration, :cardholder_name
   has_attached_file :design, styles: {thumbnail: "60x60#"}
 
   validates_presence_of :sender_city, :sender_state, :sender_zipcode
-  validates_attachment :design, :presence => true,
+  validates_attachment :design, presence: true,
     :content_type => { :content_type => "application/pdf" }
+
+  def expenses
+    case setting
+      when 'Black and White Document'
+        return cap * 0.99
+      when 'Color Document'
+        return cap * 1.49
+      when 'Glossy Color Flyer'
+        return cap * 2.53
+    end
+  end
   
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
@@ -43,7 +55,7 @@ class Order < ActiveRecord::Base
     ).to_s
   end
 
-  def scrape_the_data(url)
+  def scrape_the_data(url, cap = 0)
     doc = Nokogiri::HTML(open(url))
     addresses_and_ages = Hash.new()
 

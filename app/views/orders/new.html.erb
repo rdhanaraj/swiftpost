@@ -10,9 +10,11 @@
 
     if(buttonDataId == 1) {
       var nextDiv = $("#step2-b");
+      nextDiv.append('<input name="step2" type="hidden" value="spreadsheet-uploader">');
     }
     else if(buttonDataId == 2) {
       var nextDiv = $("#step2-a");
+      nextDiv.append('<input name="step2" type="hidden" value="demographic-selector">');
     }
     else {
       var nextDiv = $("#step3");
