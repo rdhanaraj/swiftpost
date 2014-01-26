@@ -1,7 +1,5 @@
-<% for order in @orders %>
-  
-  <div class="panel panel-default">
-  </div>
 
-  <%= image_tag @order.design.url(:thumb) %>
-<% end %>
+<p>User: <%= current_user.name %></p>
+<p>Email: <%= current_user.email if current_user.email %></p>
+<p> 
+
