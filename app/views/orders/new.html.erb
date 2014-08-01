@@ -1,3 +1,26 @@
-<h3>Step 1: Upload Your Design</h3>
-
 <%= render 'form' %>
+
+<script type="text/javascript">
+  //when the user clicks on a button, we hide the current div, and then we unhide the div based on the button the user clicked.
+  $('button').click( function(e) {
+    e.preventDefault();
+    var button = $(e.target);
+    var buttonDataId = button.attr('data-id');
+    var prevDiv = $(e.currentTarget).parent('div');
+
+    if(buttonDataId == 1) {
+      var nextDiv = $("#step2-b");
+      nextDiv.append('<input name="step2" type="hidden" value="spreadsheet-uploader">');
+    }
+    else if(buttonDataId == 2) {
+      var nextDiv = $("#step2-a");
+      nextDiv.append('<input name="step2" type="hidden" value="demographic-selector">');
+    }
+    else {
+      var nextDiv = $("#step3");
+    }
+
+    nextDiv.toggleClass("hidden");
+    prevDiv.addClass("hidden");
+  });
+</script>

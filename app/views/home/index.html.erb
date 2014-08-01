@@ -1,19 +1,42 @@
-<div class="jumbotron">
-  <h2>Welcome to the land of Swiftpost</h2>
-  <p>Snailmail made fast and simple.</p>
+<div id="bg">
+  <img src="assets/intro-bg.png" alt="">
 </div>
 
-<i class="fa fa-camera-retro fa-2x"></i>
+<h1 class="text-center" style="position:relative;font-size:60px;color:white">Get the job done, fast and simple.</h1>
+<p class="text-center" style="position:relative;font-size:20px;color:white">
+  The only direct mail manager that finds customers for you. <br> <br> 
 
-<div class="row">
-  <div class="col-md-4 center">
-    <i class="fa fa-camera-retro fa-2x"></i>
-    <h3>Step 1</h3> Upload a design
-  </div>
-  <div class="col-md-4 center">
-    <h3>Step 2</h3> Select some addresses
-  </div>
-  <div class="col-md-4 center">
-    <h3>Step 3</h3> Pay &amp; order
+  <% if user_signed_in? %> 
+<%= link_to "Make One", new_order_path, class: "btn btn-default btn-lg" %>
+<% else %>
+<%= link_to "Try Now", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+<% end %>
+
+</li>
+</p>
+
+<div class ="okay">
+  <div class="row">
+    <div class="col-md-4 text-center first well" style="color: #e74c3c;">
+      <i class="fa fa-upload fa-5x"></i>
+      <h1>Step 1</h1>
+      <p class="lead">Upload a design</p>
+      <p>Quickly drag and drop a PDF of any dimension, ready for high quality printing.<p>
+    </div>
+
+    <div class="col-md-4 text-center second well" style="color: #9b59b6;">
+      <i class="fa fa-globe fa-5x"></i>
+      <h1>Step 2</h1>
+      <p class="lead">Select addresses</p>
+      <p>Select an age and location for your clientele, or upload a spreadsheet of addresses.<p>
+    </div>
+
+    <div class="col-md-4 text-center third well" style="color: #1abc9c;">
+      <i class="fa fa-plane fa-5x"></i>
+      <h1>Step 3</h1>
+      <p class="lead">Pay & order</p>
+      <p>Pay a mere dollar a page to promote your event or brand within 2-3 business days.<p>
+    </div>
   </div>
 </div>
+

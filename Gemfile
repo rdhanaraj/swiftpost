@@ -15,6 +15,10 @@ gem 'sendgrid'
 gem 'paperclip', '~> 3.5.3'
 gem 'dropzonejs-rails'
 gem 'font-awesome-rails'
+gem 'roo'
+gem "nokogiri"
+gem 'addressable'
+gem 'lob'
 
 group :development do
   gem 'better_errors'

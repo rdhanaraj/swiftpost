@@ -1,9 +1,68 @@
 <%= form_for @order, :url => orders_path, :html => { :multipart => true } do |form| %>
-    <div>
-      <%= form.label :design %><br>
-      <%= form.file_field :design, class: 'dropzone' %>
-    </div><br>
-    <div class="actions">
-      <%= form.submit class: 'btn btn-success' %>
+  <div class= "row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div id="step1 center">
+      <h1>Step 1: Upload a design</h1>
+      <div class="form-group">
+        <%= form.file_field :design, class: 'dropzone dz-preview' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.select :setting, [['Black and White Document', 1], ['Color Document', 2], ['Glossy Color Flyer', 3]], class: 'form-control' %>
+      </div>
+
+
+      <button data-id=1 class="btn btn-default">Upload Recipient Address</button>
+      <button data-id=2 class="btn btn-default">Select a Demographic</button>
     </div>
+
+    <div id="step2-a" class="hidden">
+      <div class="form-group">
+        <h1>Step 2: Select a demographic</h1>
+        <%= form.label :city %>
+        <%= form.text_field :city, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.text_field :state, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :zipcode %>
+        <%= form.number_field :zipcode, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :starting_age %>
+        <%= form.number_field :starting_age, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :ending_age %>
+        <%= form.number_field :ending_age, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label 'How many people would you like to send your design to?' %>
+        <%= form.number_field :cap, class: 'form-control' %>
+      </div>
+
+      <%= form.submit 'Make Payment', class: 'btn btn-default' %>
+    </div>
+
+    <div id="step2-b" class="hidden">
+      <h1>Step 2: Upload addresses </h1>
+      <%= form.file_field :spreadsheet, class: 'dropzone' %><br>
+
+      <!-- <button class="btn btn-default">Make Payment</button> -->
+      <%= form.submit 'Make Payment' %>
+    </div>
+      </div>
+
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>  
 <% end %>
